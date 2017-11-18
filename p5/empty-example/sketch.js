@@ -8,7 +8,7 @@ function setup() {
 }
 
 function draw() {
-  background(255,255,255);  
+  background(25,255,255);  
   player.setSpeed(3,90);
   //player.collide(player2);
     
