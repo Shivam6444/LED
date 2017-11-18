@@ -9,10 +9,12 @@ function setup() {
 
 function draw() {
   background(25,255,255);
+  line(0,325,800,325);
  
       
 
   player.collide(player2);
+  
 
   if(keyDown("DOWN_ARROW")){
       player.setVelocity(0,5);
