@@ -8,9 +8,15 @@ function setup() {
 }
 
 function draw() {
-  background(25,255,255);  
-  player.setSpeed(3,90);
+  background(25,255,255);
+ 
+      
+
   player.collide(player2);
+
+  if(keyDown("s")){
+      player.rotation -=10;
+  }
     
     
   drawSprites();
