@@ -14,8 +14,11 @@ function draw() {
 
   player.collide(player2);
 
-  if(keyDown("s")){
-      player.rotation -=10;
+  if(keyDown("DOWN_ARROW")){
+      player.setVelocity(0,5);
+  }
+  else{
+      player.setVelocity(0,0);
   }
     
     
