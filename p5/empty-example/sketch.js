@@ -1,9 +1,8 @@
-var player,player2,line,box,coin;
+var player,player2,line,box,coin,button1;
 var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
-
 
 function setup() {
   createCanvas(800,400);
@@ -12,11 +11,11 @@ function setup() {
   frameRate(30);
   player = createSprite(50,390,20,30);
   player2 = createSprite(90,327,40,70);
-  box = createSprite(450,250,100,40);
+  box = createSprite(250,50,100,550);
   box.shapeColor = color(19,197,154);
-  coin = createSprite(200,45,10,10);
+  coin = createSprite(150,100,10,10);
   coin.shapeColor = color(250,223,27);
-  
+  button1 = createSprite(330,362,10,3);
     
 }
 
@@ -75,6 +74,11 @@ function draw() {
       coin.remove();
       score++;
   }
+    
+  if(player.collide(button1)){
+      box.remove();
+  }
+  
     
   drawSprites();
 }
