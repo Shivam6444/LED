@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "Game Jam",
     "dependencies": {
+        "express": "^4.15.2",
         "socket.io": "latest"
     },
     "author": "developer"
