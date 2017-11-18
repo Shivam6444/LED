@@ -1,7 +1,8 @@
 var player,player2,line,box,coin;
 var score =10;
 var gravity = 1;
-var jumping;
+var jumping1 = false;
+var jumping2 = false;
 
 
 function setup() {
@@ -21,30 +22,29 @@ function setup() {
 
 function draw() {
     
-    background(148,111,225);
-s = ("Score: " + score); 
-fill(255,255,255);
-text(s, 10, 10, 70, 80);
-textSize(350);
+  background(148,111,225);
+  s = ("Score: " + score); 
+  fill(255,255,255);
+  text(s, 10, 10, 70, 80);
+  textSize(350);
   
   player.addSpeed(gravity, 90);
   
   if(player.collide(line)||player.collide(box)||player.collide(player2)){
     player.velocity.y = 0;
-    if(jumping) jumping = false;
+    if(jumping1) jumping1 = false;
     //player.velocity.x=0;
   }
     
-    if(player2.collide(line)||player2.collide(box)||player2.collide(player)){
+  if(player2.collide(line)||player2.collide(box)||player2.collide(player)){
     player2.velocity.y = 0;
-    if(jumping) jumping = false;
+    if(jumping2) jumping2 = false;
     //player.velocity.x=0;
   }
 
-  if(keyWentDown("UP_ARROW") && !jumping){
-
+  if(keyWentDown("UP_ARROW") && !jumping1){
     player.addSpeed(-gravity-17, 90);
-    jumping = true;
+    jumping1 = true;
   }else if(keyDown("RIGHT_ARROW")){
     player.velocity.x+=1;
   }else if(keyDown("LEFT_ARROW")){
@@ -55,10 +55,9 @@ textSize(350);
      player.velocity.x=0;
   }
     
-    if(keyWentDown("w") && !jumping){
-
+  if(keyWentDown("w") && !jumping2){
     player2.addSpeed(-gravity-17, 90);
-    jumping = true;
+    jumping2 = true;
   }else if(keyDown("d")){
     player2.velocity.x+=0.5;
   }else if(keyDown("a")){
