@@ -1,5 +1,5 @@
 var player,player2,line,box;
-var gravity = 3;
+var gravity = 1;
 
 
 function setup() {
@@ -10,6 +10,7 @@ function setup() {
   player = createSprite(50,390,20,30);
   box = createSprite(450,250,100,40);
   box.shapeColor = color(19,197,154);
+  //box.setCollider(rectangle,0,0,50,40)
     
 }
 
@@ -21,9 +22,11 @@ function draw() {
   
   if(player.collide(line)||player.collide(box)){
     player.velocity.y = 0;
+    //player.velocity.x=0;
   }
+
   if(keyWentDown(" ")){
-    player.addSpeed(-gravity-30, 90);
+    player.addSpeed(-gravity-17, 90);
   }else if(keyDown("RIGHT_ARROW")){
     player.velocity.x+=1;
   }else if(keyDown("LEFT_ARROW")){
