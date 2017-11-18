@@ -1,5 +1,5 @@
 var player,player2,line,box,coin;
-var score =10;
+var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
@@ -29,6 +29,7 @@ function draw() {
   textSize(350);
   
   player.addSpeed(gravity, 90);
+  player2.addSpeed(gravity, 90);
   
   if(player.collide(line)||player.collide(box)||player.collide(player2)){
     player.velocity.y = 0;
@@ -47,6 +48,7 @@ function draw() {
     jumping1 = true;
   }else if(keyDown("RIGHT_ARROW")){
     player.velocity.x+=1;
+
   }else if(keyDown("LEFT_ARROW")){
     player.velocity.x-=1;
   }
