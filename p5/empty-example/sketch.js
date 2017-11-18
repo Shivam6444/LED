@@ -1,10 +1,14 @@
-var player,player2,line;
+var player,player2,line,imgP1;
 
 function setup() {
   createCanvas(800,400);
-  player = createSprite(50,50,50,50);
+  player = createSprite(50,390,50,50);
   //player2 = createSprite(50,300,50,50);
-  line = createSprite(0,400,8000,75);
+  line = createSprite(400,400,800,75);
+  //player2 = create sprite(0,400,200,75);
+    
+  img = loadImage("assets/player1.png");
+  //player.addImage(img);
     
 }
 
@@ -16,7 +20,6 @@ function draw() {
 
   
   player.collide(line);
-
   if(keyDown("DOWN_ARROW")){
       player.setVelocity(0,5);
   }else if(keyDown("UP_ARROW")){
