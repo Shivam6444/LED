@@ -19,4 +19,8 @@ function draw() {
 }
 function person(xPos, yPos, lenght, height){
 	rect(xPos, yPos, height, lenght);
-}
+   // if(keyIsPressed(LEFT_ARROW)){
+     //xpos ++;   
+    //}
+    //}
+} 
