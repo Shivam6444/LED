@@ -1,5 +1,6 @@
 var player,player2,line,box;
 var gravity = 1;
+var jumping;
 
 
 function setup() {
@@ -22,11 +23,14 @@ function draw() {
   
   if(player.collide(line)||player.collide(box)){
     player.velocity.y = 0;
+    if(jumping) jumping = false;
     //player.velocity.x=0;
   }
 
-  if(keyWentDown(" ")){
+  if(keyWentDown(" ") && !jumping){
+
     player.addSpeed(-gravity-17, 90);
+    jumping = true;
   }else if(keyDown("RIGHT_ARROW")){
     player.velocity.x+=1;
   }else if(keyDown("LEFT_ARROW")){
