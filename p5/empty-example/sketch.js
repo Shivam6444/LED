@@ -16,6 +16,12 @@ function draw() {
 
   if(keyDown("DOWN_ARROW")){
       player.setVelocity(0,5);
+  }else if(keyDown("UP_ARROW")){
+    player.setVelocity(0,-5);
+  }else if(keyDown("RIGHT_ARROW")){
+    player.setVelocity(5,0);
+  }else if(keyDown("LEFT_ARROW")){
+    player.setVelocity(-5,0);
   }
   else{
       player.setVelocity(0,0);
