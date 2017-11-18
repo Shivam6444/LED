@@ -1,23 +1,25 @@
-var player,player2,line;
-var gravity = 9.81;
+var player,player2,line,box;
+var gravity = 3;
 
 
 function setup() {
   createCanvas(800,400);
-  player = createSprite(50,50,50,50);
-  //player2 = createSprite(50,300,50,50);
+  var imgp1 = loadImage("assets/player1.png");
   line = createSprite(0,400,8000,75);
   frameRate(30);
+  player = createSprite(50,390,20,30);
+  box = createSprite(450,250,100,40);
+  box.shapeColor = color(19,197,154);
     
 }
 
 function draw() {
 
-  background(25,255,255);
+  background(148,111,225);
   
   player.addSpeed(gravity, 90);
   
-  if(player.collide(line)){
+  if(player.collide(line)||player.collide(box)){
     player.velocity.y = 0;
   }
   if(keyWentDown(" ")){
