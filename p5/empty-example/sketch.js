@@ -84,10 +84,11 @@ function draw() {
      player2.velocity.x=0;
   }
     
-    
-  if(player.collide(coin)){
-      coin.remove();
-      score++;
+  if(!coin.removed){
+    if(player.collide(coin)){
+        coin.remove();
+        score++;
+    }
   }
     
   if(player.collide(button1)){
