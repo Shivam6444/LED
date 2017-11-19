@@ -30,12 +30,19 @@ function draw() {
   player.addSpeed(gravity, 90);
   player2.addSpeed(gravity, 90);
   
+  if(!box.removed){
     if(player.collide(line)||player.collide(box)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
     }
-
+  }else{
+    if(player.collide(line)||player.collide(player2)){
+      player.velocity.y = 0;
+      if(jumping1) jumping1 = false;
+      //player.velocity.x=0;
+    }
+  }
 
  if(!box.removed){    
   if(player2.collide(line)||player2.collide(box)||player2.collide(player)){
