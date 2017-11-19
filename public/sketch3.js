@@ -27,7 +27,14 @@ function setup(){
     button2 = createSprite(450, 100, 5, 10);
     button3 = createSprite(200,360,10,5);
 
-    flag = createSprite(250,350,10,10)
+    flag = createSprite(250,350,10,10);
+
+    boxBorderend = createSprite(width,height,5,height *2);
+    boxBorderend.shapeColor = color(0,0,0);
+    boxBorderfirst = createSprite(0,0,5,height *2);
+    boxBorderfirst.shapeColor = color(0,0,0);
+    boxBorderTop = createSprite(height, 0, height*2,5 );
+    boxBorderTop.shapeColor = color(0,0,0);
 
 
 }
@@ -43,38 +50,38 @@ function draw() {
   player.addSpeed(gravity, 90);
   player2.addSpeed(2*gravity, 90);
   if(!box1.removed){
-  if(player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+  if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
   }
  }else if(!box3c.removed){
-  if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+  if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
     }
  }else if(!box3.removed){
-    if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+    if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
    }
  }else{
-  if(player.collide(line)||player.collide(box2)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+  if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box2)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
    }
  }
  if(!box1.removed){
-  if(player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
+  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
   }
  }else{
-  if(player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
+  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;

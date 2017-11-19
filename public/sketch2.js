@@ -55,33 +55,33 @@ function draw(){
   player.addSpeed(gravity, 90);
   player2.addSpeed(2*gravity, 90);
   if(!box4.removed){
-    if(player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(box4)||player.collide(player2)){
+    if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(box4)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
     }else{
- 	    if(player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(player2)){
+ 	    if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(player2)){
         player.velocity.y = 0;
         if(jumping1) jumping1 = false;
       }
     }
   }else{
-     if(player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(player2)){
+     if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box1)||player.collide(box2)||player.collide(box3)||player.collide(player2)){
         player.velocity.y = 0;
         if(jumping1) jumping1 = false;
       }
   }
   if(!box4.removed){
-    if(player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(player)){
+    if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(player)){
       player2.velocity.y = 0;
       if(jumping2) jumping2 = false;
     }else{
- 	    if(player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(player)){
+ 	    if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(player)){
         player2.velocity.y = 0;
         if(jumping2) jumping2 = false;
       }
     }
   }else{
-     if(player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(player)){
+     if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(player)){
         player2.velocity.y = 0;
         if(jumping2) jumping2 = false;
       }
