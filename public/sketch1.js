@@ -11,6 +11,11 @@ var socket = io();
 var user = 0;
 var userCount = 0;
 
+socket.on('next', function(msg){
+  console.log(msg);
+  window.location.href = "page2.html";
+});
+
 socket.on('1', function(msg){
   console.log(msg);
   if (msg == "right") {
@@ -179,6 +184,7 @@ function draw() {
 			//remove();
 			//$.getscript("sketch2.js",level2(score){});
 			// level2(score);
+    			socket.emit('next', 'next');
         		window.location.href = "page2.html";
 		}
 	}

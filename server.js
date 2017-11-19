@@ -17,6 +17,11 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
+  socket.on('next', function(msg){
+    io.emit('next', msg);
+    console.log('Next Level');
+  });
+
   socket.on('1', function(msg){
     io.emit('1', msg);
     console.log('message: ' + msg);

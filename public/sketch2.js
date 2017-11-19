@@ -11,6 +11,12 @@ var socket = io();
 var user = 0;
 var userCount = 0;
 
+socket.on('next', function(msg){
+  console.log(msg);
+  window.location.href = "page3.html";
+});
+
+
 socket.on('1', function(msg){
   console.log(msg);
   if (msg == "right") {
@@ -220,6 +226,7 @@ function draw(){
       flag.remove();
       //remove();
       //level3(score);
+      socket.emit('next', 'next');
       window.location.href = "page3.html";
     }
   }
