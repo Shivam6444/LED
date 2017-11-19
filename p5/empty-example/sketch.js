@@ -28,7 +28,7 @@ function draw() {
   textSize(350);
   
   player.addSpeed(gravity, 90);
-  player2.addSpeed(gravity, 90);
+  player2.addSpeed(2*gravity, 90);
   
   if(!box.removed){
     if(player.collide(line)||player.collide(box)||player.collide(player2)){
