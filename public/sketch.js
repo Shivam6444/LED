@@ -1,39 +1,8 @@
-var player,player2,line,box,coin,button1;
+var player,player2,line,box, box2,coin,button1,flag;
 var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
-var socket = io();
-
-socket.on('1', function(msg){
-  console.log(msg);
-  if (msg == "right") {
-    player.velocity.x+=1;
-} else if (msg == "left") {
-    player.velocity.x-=1;
-} else if (msg == "up") {
-    player.addSpeed(-gravity-17, 90);
-    jumping1 = true;
-} else if (msg == "down") {
-     player.addSpeed(gravity, 90);
-     player.velocity.x=0;
-}
-});
-
-socket.on('2', function(msg){
-  console.log(msg);
-  if (msg == "right") {
-    player2.velocity.x+=1;
-} else if (msg == "left") {
-    player2.velocity.x-=1;
-} else if (msg == "up") {
-    player2.addSpeed(-gravity-17, 90);
-    jumping1 = true;
-} else if (msg == "down") {
-     player2.addSpeed(gravity, 90);
-     player2.velocity.x=0;
-}
-});
 
 function setup() {
   createCanvas(800,400);
@@ -44,9 +13,13 @@ function setup() {
   player2 = createSprite(90,327,40,70);
   box = createSprite(250,50,100,550);
   box.shapeColor = color(19,197,154);
+  box2 = createSprite(650,350,100,300);
+  box2.shapeColor = color(19,197,154);
   coin = createSprite(150,100,10,10);
   coin.shapeColor = color(250,223,27);
   button1 = createSprite(330,362,10,3);
+  flag = createSprite(750, 150, 10, 15);
+  flag.shapeColor = color(225,0,0);
     
 }
 
@@ -62,12 +35,17 @@ function draw() {
   player2.addSpeed(2*gravity, 90);
   
   if(!box.removed){
-    if(player.collide(line)||player.collide(box)||player.collide(player2)){
+    if(player.collide(line)||player.collide(box)||player.collide(box2)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
     }
-  }else{
+  }else if(!box2.removed){
+  if(player.collide(line)||player.collide(box2)||player.collide(player2)){
+    player.velocity.y = 0;
+    if(jumping1) jumping1 = false;
+  }
+}else{
     if(player.collide(line)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
@@ -76,10 +54,15 @@ function draw() {
   }
 
  if(!box.removed){    
-  if(player2.collide(line)||player2.collide(box)||player2.collide(player)){
+  if(player2.collide(line)||player2.collide(box)||player2.collide(box2)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
+  }
+}else if(!box2.removed){
+  if(player2.collide(line)||player2.collide(box2)||player2.collide(player)){
+    player2.velocity.y = 0;
+    if(jumping2) jumping2 = false;
   }
 }else{
   if(player2.collide(line)||player2.collide(player)){
@@ -89,30 +72,43 @@ function draw() {
   }
 }
   if(keyWentDown("UP_ARROW") && !jumping1){
-    socket.emit('1', "up");
+    player.addSpeed(-gravity-17, 90);
+    jumping1 = true;
   }else if(keyDown("RIGHT_ARROW")){
-    socket.emit('1', "right");
-  } else if(keyDown("LEFT_ARROW")){
-    socket.emit('1', "left");
-  } else{
-    socket.emit('1', "down");
+    player.velocity.x+=1;
+
+  }else if(keyDown("LEFT_ARROW")){
+    player.velocity.x-=1;
+  }
+  else{
+     player.addSpeed(gravity, 90);
+     player.velocity.x=0;
   }
     
   if(keyWentDown("w") && !jumping2){
-    socket.emit('2', "up");
+    player2.addSpeed(-gravity-17, 90);
+    jumping2 = true;
   }else if(keyDown("d")){
-    socket.emit('2', "right");
+    player2.velocity.x+=0.5;
   }else if(keyDown("a")){
-    socket.emit('2', "left");
+    player2.velocity.x-=0.5;
   }
   else{
-    socket.emit('2', "down");
+     player2.addSpeed(gravity, 90);
+     player2.velocity.x=0;
   }
     
   if(!coin.removed){
     if(player.collide(coin)){
         coin.remove();
         score++;
+    }
+  }
+  if(!flag.removed){
+    if(player.collide(flag)){
+      flag.remove();
+      box2.remove();
+      //Load level 2
     }
   }
     
