@@ -12,7 +12,9 @@ function setup(){
 	line = createSprite(0,400,8000,75);
  	frameRate(30);
  	player = createSprite(50,390,20,30);
+  player.shapeColor = color(225,0,0);
   player2 = createSprite(90,327,40,70);
+  player2.shapeColor = color(0,0,225);
 
   box1 = createSprite(200,250,100,30);
   box2 = createSprite(400,150,100,30);
@@ -38,7 +40,7 @@ function setup(){
   button1.shapeColor = color(0,0,0);
 
   flag = createSprite(725, 60, 10, 15);
-  flag.shapeColor = color(225,0,0);
+  flag.shapeColor = color(225,225,225);
 
   boxBorderend = createSprite(width,height,5,height *2);
   boxBorderend.shapeColor = color(0,0,0);

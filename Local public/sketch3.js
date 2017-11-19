@@ -14,7 +14,9 @@ function setup(){
   line = createSprite(0,400,8000,75);
   frameRate(30);
   player = createSprite(780,350,20,30);
+  player.shapeColor = color(225,0,0);
     player2 = createSprite(30,327,40,70);
+    player2.shapeColor = color(0,0,225);
 
     box1 = createSprite(90, 287, 50, 150);
     box2 = createSprite(92, 260, 40, 30);
@@ -26,10 +28,14 @@ function setup(){
     box5 = createSprite(700, 280,100, 100);
 
     button1 = createSprite(620, 360, 10,5);
+    button1.shapeColor = color(0,0,0);
     button2 = createSprite(450, 100, 5, 10);
+    button2.shapeColor = color(0,0,0);
     button3 = createSprite(200,360,10,5);
+    button3.shapeColor = color(0,0,0);
 
     flag = createSprite(250,350,10,10);
+    flag.shapeColor = color(225,225,225);
 
     boxBorderend = createSprite(width,height,5,height *2);
     boxBorderend.shapeColor = color(0,0,0);
@@ -129,6 +135,7 @@ function draw() {
   if(!flag.removed){
     if(player.collide(flag)){
       flag.remove();
+      window.location.href = "win.html";
       //tally score
     }
   }
