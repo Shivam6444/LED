@@ -7,6 +7,76 @@ var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
 
+/* Socket Shit */
+var socket = io();
+var user = 0;
+var userCount = 0;
+
+socket.on('1', function(msg){
+  console.log(msg);
+  if (msg == "right") {
+    player.velocity.x+=1;
+} else if (msg == "left") {
+    player.velocity.x-=1;
+} else if (msg == "up") {
+    player.addSpeed(-gravity-17, 90);
+    jumping1 = true;
+} else if (msg == "down") {
+     player.addSpeed(gravity, 90);
+     player.velocity.x=0;
+}
+});
+socket.on('2', function(msg){
+  console.log(msg);
+  if (msg == "right") {
+    player2.velocity.x+=1;
+} else if (msg == "left") {
+    player2.velocity.x-=1;
+} else if (msg == "up") {
+    player2.addSpeed(-gravity-17, 90);
+    jumping1 = true;
+} else if (msg == "down") {
+     player2.addSpeed(gravity, 90);
+     player2.velocity.x=0;
+}
+});
+
+socket.on('userCount', function(msg) {
+   console.log("User: " + msg);
+   if (userCount == 0) {
+	user = msg;
+	userCount = msg;
+   } else {
+	playerv = [
+	  player.position.x,
+     	  player.position.y
+	];
+	player2v = [
+	  player2.position.x,
+	  player2.position.y
+	];
+	console.log("Emitted");	
+    	socket.emit('player', playerv);
+    	socket.emit('player2', player2v);
+   	userCount++;
+   }
+});
+
+socket.on('player', function(msg) {
+	console.log(msg);
+	console.log("Receved");
+	player.remove();
+  	player = createSprite(msg[0],msg[1],20,30);
+});
+socket.on('player2', function(msg) {
+	console.log(msg);
+	console.log("Receved");
+	player2.remove();
+  	player2 = createSprite(msg[0],msg[1],40,70);
+});
+/* End of Socket Shit */
+
+
 function setup(){
   createCanvas(800,400);
   line = createSprite(0,400,8000,75);
@@ -87,33 +157,17 @@ function draw() {
     //player.velocity.x=0;
   }
  }
-
+ /* More Socket Shit */
  if(keyWentDown("UP_ARROW") && !jumping1){
-    player.addSpeed(-gravity-12, 90);
-    jumping1 = true;
-  }else if(keyDown("RIGHT_ARROW")){
-    player.velocity.x+=1;
-
-  }else if(keyDown("LEFT_ARROW")){
-    player.velocity.x-=1;
-  }
-  else{
-     player.addSpeed(gravity, 90);
-     player.velocity.x=0;
-  }
-    
-  if(keyWentDown("w") && !jumping2){
-    player2.addSpeed(-gravity-17, 90);
-    jumping2 = true;
-  }else if(keyDown("d")){
-    player2.velocity.x+=0.5;
-  }else if(keyDown("a")){
-    player2.velocity.x-=0.5;
-  }
-  else{
-     player2.addSpeed(gravity, 90);
-     player2.velocity.x=0;
-  }
+	 socket.emit(user, "up");
+ }else if(keyDown("RIGHT_ARROW")){
+	 socket.emit(user, "right");
+ } else if(keyDown("LEFT_ARROW")){
+	 socket.emit(user, "left");
+ } else{
+	 //socket.emit(user, "down");
+ }
+ /* End of Socket Shit */
 
   if(player.collide(button1)){
       box1.remove();
