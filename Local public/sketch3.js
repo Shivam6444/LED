@@ -6,8 +6,10 @@ var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
+var br;
 
 function setup(){
+  br = loadImage("back3.jpg");
   createCanvas(800,400);
   line = createSprite(0,400,8000,75);
   frameRate(30);
@@ -40,9 +42,8 @@ function setup(){
 }
 
 function draw() {
-    
-  background(148,111,225);
-  s = ("Score: " + score); 
+  background(br);
+  s = ("Score: " + score);
   fill(255,255,255);
   text(s, 10, 10, 70, 80);
   textSize(350);
@@ -101,7 +102,7 @@ function draw() {
      player.addSpeed(gravity, 90);
      player.velocity.x=0;
   }
-    
+
   if(keyWentDown("w") && !jumping2){
     player2.addSpeed(-gravity-17, 90);
     jumping2 = true;

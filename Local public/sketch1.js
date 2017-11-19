@@ -4,9 +4,10 @@ var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
-
+var br;
 
   function setup() {
+    br = loadImage("back.jpg");
     createCanvas(800,400);
     var imgp1 = loadImage("assets/player1.png");
     line = createSprite(0,400,8000,75);
@@ -33,21 +34,20 @@ var jumping2 = false;
     boxBorderfirst = createSprite(0,0,5,height *2);
     boxBorderfirst.shapeColor = color(0,0,0);
     boxBorderTop = createSprite(height, 0, height*2,5 );
-    boxBorderTop.shapeColor = color(0,0,0);    
+    boxBorderTop.shapeColor = color(0,0,0);
   }
 
   function draw() {
-    
-    background(148,111,225);
+    background(br);
 
-    s = ("Score: " + score); 
+    s = ("Score: " + score);
     fill(255,255,255);
     text(s, 10, 10, 70, 80);
     textSize(350);
-    
+
     player.addSpeed(gravity, 90);
     player2.addSpeed(2*gravity, 90);
-    
+
     if(!box.removed){
       if(player.collide(boxBorderend) || player.collide(boxBorderTop)|| player.collide(boxBorderfirst)||player.collide(line)||player.collide(box)||player.collide(box2)||player.collide(player2)){
         player.velocity.y = 0;
@@ -81,7 +81,7 @@ var jumping2 = false;
           player2.velocity.y = 0;
           if(jumping2) jumping2 = false;
       }
-    } 
+    }
 
     if(keyWentDown("UP_ARROW") && !jumping1){
       player.addSpeed(-gravity-17, 90);//CONSIDER TURNING THIS TO 12
@@ -108,7 +108,7 @@ var jumping2 = false;
        player2.addSpeed(gravity, 90);
        player2.velocity.x=0;
     }
-      
+
     if(!coin.removed){
       if(player.collide(coin)){
           coin.remove();

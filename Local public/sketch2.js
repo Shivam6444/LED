@@ -4,17 +4,19 @@ var score = 0;//sketch.js.getScore();
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
+var br;
 
 function setup(){
+    br = loadImage("back2.jpg");
 	createCanvas(800,400);
 	line = createSprite(0,400,8000,75);
  	frameRate(30);
  	player = createSprite(50,390,20,30);
   player2 = createSprite(90,327,40,70);
-  	
+
   box1 = createSprite(200,250,100,30);
   box2 = createSprite(400,150,100,30);
-  box3 = createSprite(700,100, 100,30); 
+  box3 = createSprite(700,100, 100,30);
   box4 = createSprite(700,280, 150,100);
 
   coin1 = createSprite(50, 200, 10,10);
@@ -45,13 +47,13 @@ function setup(){
   boxBorderTop = createSprite(height, 0, height*2,5 );
   boxBorderTop.shapeColor = color(0,0,0);}
 
-function draw(){  
-  background(148,111,225);
-  s = ("Score: " + score); 
+function draw(){
+  background(br);
+  s = ("Score: " + score);
   fill(255,255,255);
   text(s, 10, 10, 70, 80);
   textSize(350);
-  
+
   player.addSpeed(gravity, 90);
   player2.addSpeed(2*gravity, 90);
   if(!box4.removed){
@@ -99,7 +101,7 @@ function draw(){
      player.addSpeed(gravity, 90);
      player.velocity.x=0;
   }
-    
+
   if(keyWentDown("w") && !jumping2){
     player2.addSpeed(-gravity-17, 90);
     jumping2 = true;
@@ -158,7 +160,7 @@ function draw(){
   }
   if(player.collide(button1)){
     box4.remove();
-  } 
+  }
   if(!flag.removed){
     if(player.collide(flag)){
       flag.remove();
@@ -168,5 +170,5 @@ function draw(){
   }
 
   drawSprites();
- 
+
 }
