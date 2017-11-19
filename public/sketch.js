@@ -3,6 +3,7 @@ var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
+var socket = io();
 
 function setup() {
   createCanvas(800,400);
@@ -47,6 +48,7 @@ function draw() {
     jumping1 = true;
   }else if(keyDown("RIGHT_ARROW")){
     player.velocity.x+=1;
+    socket.emit('chat message', "Right");
 
   }else if(keyDown("LEFT_ARROW")){
     player.velocity.x-=1;
