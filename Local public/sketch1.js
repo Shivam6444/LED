@@ -12,14 +12,17 @@ var br;
     var imgp1 = loadImage("assets/player1.png");
     line = createSprite(0,400,8000,75);
     frameRate(30);
+    line.shapeColor = color(81,199,0);
 
     player = createSprite(50,390,20,30);
+    player.shapeColor = color(35,76,97);
     player2 = createSprite(90,327,40,70);
+    player2.shapeColor = color(206,99,82);
 
     box = createSprite(250,50,100,550);
-    box.shapeColor = color(19,197,154);
+    box.shapeColor = color(0,0,0);
     box2 = createSprite(650,350,100,350);
-    box2.shapeColor = color(19,197,154);
+    box2.shapeColor = color(128,128,128);
 
     coin = createSprite(150,100,10,10);
     coin.shapeColor = color(250,223,27);
