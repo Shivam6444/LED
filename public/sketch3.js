@@ -8,26 +8,26 @@ var jumping1 = false;
 var jumping2 = false;
 
 function setup(){
-	createCanvas(800,400);
-	line = createSprite(0,400,8000,75);
- 	frameRate(30);
- 	player = createSprite(780,350,20,30);
-  	player2 = createSprite(30,327,40,70);
+  createCanvas(800,400);
+  line = createSprite(0,400,8000,75);
+  frameRate(30);
+  player = createSprite(780,350,20,30);
+    player2 = createSprite(30,327,40,70);
 
-  	box1 = createSprite(90, 287, 50, 150);
-  	box2 = createSprite(92, 260, 40, 30);
-  	box3 = createSprite(100, 200, 480, 30);
-  	box3a = createSprite(360, 287, 30, 150);
-  	box3b = createSprite(390, 310, 30, 105);
-  	box3c = createSprite(420, 325,30,75);
-  	box4 = createSprite(550, 180, 200, 300);
-  	box5 = createSprite(700, 280,100, 100);
+    box1 = createSprite(90, 287, 50, 150);
+    box2 = createSprite(92, 260, 40, 30);
+    box3 = createSprite(100, 200, 480, 30);
+    box3a = createSprite(360, 287, 30, 150);
+    box3b = createSprite(390, 310, 30, 105);
+    box3c = createSprite(420, 325,30,75);
+    box4 = createSprite(550, 180, 200, 300);
+    box5 = createSprite(700, 280,100, 100);
 
-  	button1 = createSprite(620, 360, 10,5);
-  	button2 = createSprite(450, 100, 5, 10);
-  	button3 = createSprite(200,360,10,5);
+    button1 = createSprite(620, 360, 10,5);
+    button2 = createSprite(450, 100, 5, 10);
+    button3 = createSprite(200,360,10,5);
 
-  	flag = createSprite(250,350,10,10)
+    flag = createSprite(250,350,10,10)
 
 
 }
@@ -49,17 +49,23 @@ function draw() {
       //player.velocity.x=0;
   }
  }else if(!box3c.removed){
- 	if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+  if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box3c)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
     }
- }else{
- 	if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+ }else if(!box3.removed){
+    if(player.collide(line)||player.collide(box2)||player.collide(box3)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
       player.velocity.y = 0;
       if(jumping1) jumping1 = false;
       //player.velocity.x=0;
-	 }
+   }
+ }else{
+  if(player.collide(line)||player.collide(box2)||player.collide(box3a)||player.collide(box3b)||player.collide(box4)||player.collide(box5)||player.collide(player2)){
+      player.velocity.y = 0;
+      if(jumping1) jumping1 = false;
+      //player.velocity.x=0;
+   }
  }
  if(!box1.removed){
   if(player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
@@ -68,7 +74,7 @@ function draw() {
     //player.velocity.x=0;
   }
  }else{
- 	if(player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
+  if(player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
@@ -106,10 +112,10 @@ function draw() {
       box1.remove();
   }
   if(player.collide(button2)){
-  	box3.remove();
+    box3.remove();
   }
   if(player2.collide(button3)){
-  	box3c.remove();
+    box3c.remove();
   }
 
   if(!flag.removed){
