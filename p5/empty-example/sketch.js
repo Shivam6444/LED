@@ -30,18 +30,26 @@ function draw() {
   player.addSpeed(gravity, 90);
   player2.addSpeed(gravity, 90);
   
-  if(player.collide(line)||player.collide(box)||player.collide(player2)){
-    player.velocity.y = 0;
-    if(jumping1) jumping1 = false;
-    //player.velocity.x=0;
-  }
-    
+    if(player.collide(line)||player.collide(box)||player.collide(player2)){
+      player.velocity.y = 0;
+      if(jumping1) jumping1 = false;
+      //player.velocity.x=0;
+    }
+
+
+ if(!box.removed){    
   if(player2.collide(line)||player2.collide(box)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
   }
-
+}else{
+  if(player2.collide(line)||player2.collide(player)){
+    player2.velocity.y = 0;
+    if(jumping2) jumping2 = false;
+    //player.velocity.x=0;
+  }
+}
   if(keyWentDown("UP_ARROW") && !jumping1){
     player.addSpeed(-gravity-17, 90);
     jumping1 = true;
