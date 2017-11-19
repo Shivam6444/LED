@@ -80,7 +80,7 @@ socket.on('player2', function(msg) {
 
 function setup(){
 
-  br = loadImage("back.jpg");
+  br = loadImage("back3.jpg");
   createCanvas(800,400);
   line = createSprite(0,400,8000,75);
   frameRate(30);
