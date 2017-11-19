@@ -6,11 +6,6 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-*/
 io.on('connection', function(socket){
   console.log('a user connected');
 
@@ -18,10 +13,15 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('1', function(msg){
+    io.emit('1', msg);
     console.log('message: ' + msg);
   });
+  socket.on('2', function(msg){
+    io.emit('2', msg);
+    console.log('message: ' + msg);
+  });
+
 });
 
 http.listen(3000, function(){

@@ -5,6 +5,36 @@ var jumping1 = false;
 var jumping2 = false;
 var socket = io();
 
+socket.on('1', function(msg){
+  console.log(msg);
+  if (msg == "right") {
+    player.velocity.x+=1;
+} else if (msg == "left") {
+    player.velocity.x-=1;
+} else if (msg == "up") {
+    player.addSpeed(-gravity-17, 90);
+    jumping1 = true;
+} else if (msg == "down") {
+     player.addSpeed(gravity, 90);
+     player.velocity.x=0;
+}
+});
+
+socket.on('2', function(msg){
+  console.log(msg);
+  if (msg == "right") {
+    player2.velocity.x+=1;
+} else if (msg == "left") {
+    player2.velocity.x-=1;
+} else if (msg == "up") {
+    player2.addSpeed(-gravity-17, 90);
+    jumping1 = true;
+} else if (msg == "down") {
+     player2.addSpeed(gravity, 90);
+     player2.velocity.x=0;
+}
+});
+
 function setup() {
   createCanvas(800,400);
   var imgp1 = loadImage("assets/player1.png");
@@ -44,31 +74,24 @@ function draw() {
   }
 
   if(keyWentDown("UP_ARROW") && !jumping1){
-    player.addSpeed(-gravity-17, 90);
-    jumping1 = true;
+    socket.emit('1', "up");
   }else if(keyDown("RIGHT_ARROW")){
-    player.velocity.x+=1;
-    socket.emit('chat message', "Right");
-
-  }else if(keyDown("LEFT_ARROW")){
-    player.velocity.x-=1;
-  }
-  else{
-     player.addSpeed(gravity, 90);
-     player.velocity.x=0;
+    socket.emit('1', "right");
+  } else if(keyDown("LEFT_ARROW")){
+    socket.emit('1', "left");
+  } else{
+    socket.emit('1', "down");
   }
     
   if(keyWentDown("w") && !jumping2){
-    player2.addSpeed(-gravity-17, 90);
-    jumping2 = true;
+    socket.emit('2', "up");
   }else if(keyDown("d")){
-    player2.velocity.x+=0.5;
+    socket.emit('2', "right");
   }else if(keyDown("a")){
-    player2.velocity.x-=0.5;
+    socket.emit('2', "left");
   }
   else{
-     player2.addSpeed(gravity, 90);
-     player2.velocity.x=0;
+    socket.emit('2', "down");
   }
     
     
