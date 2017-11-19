@@ -14,22 +14,28 @@ function setup(){
   line = createSprite(0,400,8000,75);
   frameRate(30);
   player = createSprite(780,350,20,30);
+  player.shapeColor = color(225,0,0);
     player2 = createSprite(30,327,40,70);
+    player2.shapeColor = color(0,0,225);
 
     box1 = createSprite(90, 287, 50, 150);
     box2 = createSprite(92, 260, 40, 30);
-    box3 = createSprite(100, 200, 480, 30);
+    box3 = createSprite(100, 200, 500, 30);
     box3a = createSprite(360, 287, 30, 150);
     box3b = createSprite(390, 310, 30, 105);
-    box3c = createSprite(420, 325,30,75);
+    box3c = createSprite(420, 325,60,75);
     box4 = createSprite(550, 180, 200, 300);
     box5 = createSprite(700, 280,100, 100);
 
     button1 = createSprite(620, 360, 10,5);
+    button1.shapeColor = color(0,0,0);
     button2 = createSprite(450, 100, 5, 10);
+    button2.shapeColor = color(0,0,0);
     button3 = createSprite(200,360,10,5);
+    button3.shapeColor = color(0,0,0);
 
     flag = createSprite(250,350,10,10);
+    flag.shapeColor = color(225,225,225);
 
     boxBorderend = createSprite(width,height,5,height *2);
     boxBorderend.shapeColor = color(0,0,0);
@@ -76,13 +82,13 @@ function draw() {
    }
  }
  if(!box1.removed){
-  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
+  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box1)||player2.collide(box2)||player2.collide(box3)||player2.collide(box3a)||player2.collide(box3b)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
   }
  }else{
-  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
+  if(player2.collide(boxBorderend) || player2.collide(boxBorderTop)|| player2.collide(boxBorderfirst)||player2.collide(line)||player2.collide(box2)||player2.collide(box3)||player2.collide(box3a)||player2.collide(box3b)||player2.collide(box4)||player2.collide(box5)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
     //player.velocity.x=0;
@@ -129,6 +135,7 @@ function draw() {
   if(!flag.removed){
     if(player.collide(flag)){
       flag.remove();
+      window.location.href = "win.html";
       //tally score
     }
   }

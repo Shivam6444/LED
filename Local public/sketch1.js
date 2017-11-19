@@ -15,9 +15,9 @@ var br;
     line.shapeColor = color(81,199,0);
 
     player = createSprite(50,390,20,30);
-    player.shapeColor = color(35,76,97);
+    player.shapeColor = color(225,0,0);
     player2 = createSprite(90,327,40,70);
-    player2.shapeColor = color(206,99,82);
+    player2.shapeColor = color(0,0,225);
 
     box = createSprite(250,50,100,550);
     box.shapeColor = color(0,0,0);
@@ -28,9 +28,10 @@ var br;
     coin.shapeColor = color(250,223,27);
 
     button1 = createSprite(330,362,10,3);
+    button1.shapeColor = color(0,0,0);
 
     flag = createSprite(750, 150, 10, 15);
-    flag.shapeColor = color(225,0,0);
+    flag.shapeColor = color(225,225,225);
 
     boxBorderend = createSprite(width,height,5,height *2);
     boxBorderend.shapeColor = color(0,0,0);
