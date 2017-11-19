@@ -125,6 +125,7 @@ var br;
         //remove();
         //$.getscript("sketch2.js",level2(score){});
        // level2(score);
+        window.location.href = "page2.html";
       }
     }
     if(player.collide(button1)){

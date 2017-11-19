@@ -20,20 +20,20 @@ function setup() {
   button1 = createSprite(330,362,10,3);
   flag = createSprite(750, 150, 10, 15);
   flag.shapeColor = color(225,0,0);
-    
+
 }
 
 function draw() {
-    
+
   background(148,111,225);
-  s = ("Score: " + score); 
+  s = ("Score: " + score);
   fill(255,255,255);
   text(s, 10, 10, 70, 80);
   textSize(350);
-  
+
   player.addSpeed(gravity, 90);
   player2.addSpeed(2*gravity, 90);
-  
+
   if(!box.removed){
     if(player.collide(line)||player.collide(box)||player.collide(box2)||player.collide(player2)){
       player.velocity.y = 0;
@@ -53,7 +53,7 @@ function draw() {
     }
   }
 
- if(!box.removed){    
+ if(!box.removed){
   if(player2.collide(line)||player2.collide(box)||player2.collide(box2)||player2.collide(player)){
     player2.velocity.y = 0;
     if(jumping2) jumping2 = false;
@@ -84,7 +84,7 @@ function draw() {
      player.addSpeed(gravity, 90);
      player.velocity.x=0;
   }
-    
+
   if(keyWentDown("w") && !jumping2){
     player2.addSpeed(-gravity-17, 90);
     jumping2 = true;
@@ -97,7 +97,7 @@ function draw() {
      player2.addSpeed(gravity, 90);
      player2.velocity.x=0;
   }
-    
+
   if(!coin.removed){
     if(player.collide(coin)){
         coin.remove();
@@ -109,13 +109,14 @@ function draw() {
       flag.remove();
       box2.remove();
       //Load level 2
+      window.location.href = "page2.html";
     }
   }
-    
+
   if(player.collide(button1)){
       box.remove();
   }
-  
-    
+
+
   drawSprites();
 }

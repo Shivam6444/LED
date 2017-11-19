@@ -166,6 +166,7 @@ function draw(){
       flag.remove();
       //remove();
       //level3(score);
+      window.location.href = "page3.html";
     }
   }
 
