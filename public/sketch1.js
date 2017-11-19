@@ -4,6 +4,7 @@ var score = 0;
 var gravity = 1;
 var jumping1 = false;
 var jumping2 = false;
+var br;
 
 /* Socket Shit */
 var socket = io();
@@ -78,6 +79,7 @@ socket.on('player2', function(msg) {
 
 
 function setup() {
+    	br = loadImage("back.jpg");
 	createCanvas(800,400);
 	var imgp1 = loadImage("assets/player1.png");
 	line = createSprite(0,400,8000,75);
@@ -109,7 +111,7 @@ function setup() {
 
 function draw() {
 
-	background(148,111,225);
+        background(br);
 
 	s = ("Score: " + score); 
 	fill(255,255,255);
@@ -177,6 +179,7 @@ function draw() {
 			//remove();
 			//$.getscript("sketch2.js",level2(score){});
 			// level2(score);
+        		window.location.href = "page2.html";
 		}
 	}
 	if(player.collide(button1)){
